@@ -3,12 +3,16 @@ import WebKit
 
 final class EkeyWebViewController: NSObject, WKNavigationDelegate, WKUIDelegate {
     let webView: WKWebView
-    private let onCompleted: (URL) -> Void
+    private let onCompleted: (URL, String, EkeyIdentityData) -> Void
     private let onFailed: (EkeyLoginError) -> Void
     private var didOpenEkeyApp = false
     private var expectedState: String?
+    private var codeVerifier: String?
 
-    init(onCompleted: @escaping (URL) -> Void, onFailed: @escaping (EkeyLoginError) -> Void) {
+    init(
+        onCompleted: @escaping (URL, String, EkeyIdentityData) -> Void,
+        onFailed: @escaping (EkeyLoginError) -> Void
+    ) {
         self.onCompleted = onCompleted
         self.onFailed = onFailed
         webView = WKWebView()
@@ -21,6 +25,7 @@ final class EkeyWebViewController: NSObject, WKNavigationDelegate, WKUIDelegate 
         didOpenEkeyApp = false
         let request = EkeyAuthorizationRequestBuilder.makeRequest()
         expectedState = request.state
+        codeVerifier = request.codeVerifier
         webView.load(URLRequest(url: request.url))
     }
 
@@ -67,10 +72,23 @@ final class EkeyWebViewController: NSObject, WKNavigationDelegate, WKUIDelegate 
         let urlString = url.absoluteString
 
         if urlString.hasPrefix(EkeyLoginConfig.redirectUri) {
-            if stateMatches(url) {
-                onCompleted(url)
-            } else {
+            guard stateMatches(url), let codeVerifier,
+                  let code = URLComponents(url: url, resolvingAgainstBaseURL: false)?
+                    .queryItems?.first(where: { $0.name == "code" })?.value
+            else {
                 onFailed(.stateMismatch)
+                return true
+            }
+
+            EkeyTokenExchange.exchangeAndFetchKyc(code: code, codeVerifier: codeVerifier) { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let identity):
+                        self?.onCompleted(url, codeVerifier, identity)
+                    case .failure(let error):
+                        self?.onFailed(.tokenExchangeFailed(error))
+                    }
+                }
             }
             return true
         }

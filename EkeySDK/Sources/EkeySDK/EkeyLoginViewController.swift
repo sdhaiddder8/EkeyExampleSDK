@@ -5,7 +5,7 @@ final class EkeyLoginViewController: UIViewController {
     private let onCancelled: () -> Void
 
     init(
-        onCompleted: @escaping (URL) -> Void,
+        onCompleted: @escaping (URL, String, EkeyIdentityData) -> Void,
         onFailed: @escaping (EkeyLoginError) -> Void,
         onCancelled: @escaping () -> Void
     ) {

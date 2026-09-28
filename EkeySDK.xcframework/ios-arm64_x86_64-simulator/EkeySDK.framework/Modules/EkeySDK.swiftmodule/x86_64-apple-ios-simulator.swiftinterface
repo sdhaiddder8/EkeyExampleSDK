@@ -13,17 +13,13 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 public enum EkeyLoginResult {
-  case completed(redirectURL: Foundation.URL)
+  case completed(redirectURL: Foundation.URL, codeVerifier: Swift.String, identity: EkeySDK.EkeyIdentityData)
   case cancelled
   case failed(EkeySDK.EkeyLoginError)
 }
 public enum EkeyLoginError : Swift.Error {
   case stateMismatch
-  public static func == (a: EkeySDK.EkeyLoginError, b: EkeySDK.EkeyLoginError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
+  case tokenExchangeFailed(EkeySDK.EkeyTokenExchangeError)
 }
 @_hasMissingDesignatedInitializers final public class Ekey {
   public static let shared: EkeySDK.Ekey
@@ -32,9 +28,16 @@ public enum EkeyLoginError : Swift.Error {
   final public func handleOpenURL(_ url: Foundation.URL) -> Swift.Bool
   @objc deinit
 }
+public struct EkeyIdentityData {
+  public let claims: [Swift.String : Any]
+  public let kycData: [Swift.String : Any]?
+}
+public enum EkeyTokenExchangeError : Swift.Error {
+  case network(any Swift.Error)
+  case badResponse
+  case malformedIdToken
+}
 extension SwiftUICore.View {
   @_Concurrency.MainActor @preconcurrency public func ekeyURLHandling() -> some SwiftUICore.View
   
 }
-extension EkeySDK.EkeyLoginError : Swift.Equatable {}
-extension EkeySDK.EkeyLoginError : Swift.Hashable {}

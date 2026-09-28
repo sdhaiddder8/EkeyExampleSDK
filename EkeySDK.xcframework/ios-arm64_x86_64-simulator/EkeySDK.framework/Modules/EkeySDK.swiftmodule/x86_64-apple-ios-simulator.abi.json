@@ -52,12 +52,12 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(EkeySDK.EkeyLoginResult.Type) -> (Foundation.URL) -> EkeySDK.EkeyLoginResult",
+                "printedName": "(EkeySDK.EkeyLoginResult.Type) -> (Foundation.URL, Swift.String, EkeySDK.EkeyIdentityData) -> EkeySDK.EkeyLoginResult",
                 "children": [
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(Foundation.URL) -> EkeySDK.EkeyLoginResult",
+                    "printedName": "(Foundation.URL, Swift.String, EkeySDK.EkeyIdentityData) -> EkeySDK.EkeyLoginResult",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -68,13 +68,25 @@
                       {
                         "kind": "TypeNominal",
                         "name": "Tuple",
-                        "printedName": "(redirectURL: Foundation.URL)",
+                        "printedName": "(redirectURL: Foundation.URL, codeVerifier: Swift.String, identity: EkeySDK.EkeyIdentityData)",
                         "children": [
                           {
                             "kind": "TypeNominal",
                             "name": "URL",
                             "printedName": "Foundation.URL",
                             "usr": "s:10Foundation3URLV"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "EkeyIdentityData",
+                            "printedName": "EkeySDK.EkeyIdentityData",
+                            "usr": "s:7EkeySDK0A12IdentityDataV"
                           }
                         ]
                       }
@@ -97,8 +109,8 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:7EkeySDK0A11LoginResultO9completedyAC10Foundation3URLV_tcACmF",
-            "mangledName": "$s7EkeySDK0A11LoginResultO9completedyAC10Foundation3URLV_tcACmF",
+            "usr": "s:7EkeySDK0A11LoginResultO9completedyAC10Foundation3URLV_SSAA0A12IdentityDataVtcACmF",
+            "mangledName": "$s7EkeySDK0A11LoginResultO9completedyAC10Foundation3URLV_SSAA0A12IdentityDataVtcACmF",
             "moduleName": "EkeySDK",
             "declAttributes": [
               "RawDocComment"
@@ -268,100 +280,57 @@
             ]
           },
           {
-            "kind": "Function",
-            "name": "==",
-            "printedName": "==(_:_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "EkeyLoginError",
-                "printedName": "EkeySDK.EkeyLoginError",
-                "usr": "s:7EkeySDK0A10LoginErrorO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "EkeyLoginError",
-                "printedName": "EkeySDK.EkeyLoginError",
-                "usr": "s:7EkeySDK0A10LoginErrorO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:7EkeySDK0A10LoginErrorO2eeoiySbAC_ACtFZ",
-            "mangledName": "$s7EkeySDK0A10LoginErrorO2eeoiySbAC_ACtFZ",
-            "moduleName": "EkeySDK",
-            "static": true,
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
             "kind": "Var",
-            "name": "hashValue",
-            "printedName": "hashValue",
+            "name": "tokenExchangeFailed",
+            "printedName": "tokenExchangeFailed",
             "children": [
               {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7EkeySDK0A10LoginErrorO9hashValueSivp",
-            "mangledName": "$s7EkeySDK0A10LoginErrorO9hashValueSivp",
-            "moduleName": "EkeySDK",
-            "implicit": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(EkeySDK.EkeyLoginError.Type) -> (EkeySDK.EkeyTokenExchangeError) -> EkeySDK.EkeyLoginError",
                 "children": [
                   {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(EkeySDK.EkeyTokenExchangeError) -> EkeySDK.EkeyLoginError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EkeyLoginError",
+                        "printedName": "EkeySDK.EkeyLoginError",
+                        "usr": "s:7EkeySDK0A10LoginErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EkeyTokenExchangeError",
+                        "printedName": "EkeySDK.EkeyTokenExchangeError",
+                        "usr": "s:7EkeySDK0A18TokenExchangeErrorO"
+                      }
+                    ]
+                  },
+                  {
                     "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
+                    "name": "Metatype",
+                    "printedName": "EkeySDK.EkeyLoginError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EkeyLoginError",
+                        "printedName": "EkeySDK.EkeyLoginError",
+                        "usr": "s:7EkeySDK0A10LoginErrorO"
+                      }
+                    ]
                   }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7EkeySDK0A10LoginErrorO9hashValueSivg",
-                "mangledName": "$s7EkeySDK0A10LoginErrorO9hashValueSivg",
-                "moduleName": "EkeySDK",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "hash",
-            "printedName": "hash(into:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Hasher",
-                "printedName": "Swift.Hasher",
-                "paramValueOwnership": "InOut",
-                "usr": "s:s6HasherV"
+                ]
               }
             ],
-            "declKind": "Func",
-            "usr": "s:7EkeySDK0A10LoginErrorO4hash4intoys6HasherVz_tF",
-            "mangledName": "$s7EkeySDK0A10LoginErrorO4hash4intoys6HasherVz_tF",
+            "declKind": "EnumElement",
+            "usr": "s:7EkeySDK0A10LoginErrorO19tokenExchangeFailedyAcA0a5TokenfD0OcACmF",
+            "mangledName": "$s7EkeySDK0A10LoginErrorO19tokenExchangeFailedyAcA0a5TokenfD0OcACmF",
             "moduleName": "EkeySDK",
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
+            "declAttributes": [
+              "RawDocComment"
+            ]
           }
         ],
         "declKind": "Enum",
@@ -381,10 +350,10 @@
           },
           {
             "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
           },
           {
             "kind": "Conformance",
@@ -392,20 +361,6 @@
             "printedName": "Escapable",
             "usr": "s:s9EscapableP",
             "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Error",
-            "printedName": "Error",
-            "usr": "s:s5ErrorP",
-            "mangledName": "$ss5ErrorP"
           },
           {
             "kind": "Conformance",
@@ -599,6 +554,375 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "EkeySDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "EkeyIdentityData",
+        "printedName": "EkeyIdentityData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "claims",
+            "printedName": "claims",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7EkeySDK0A12IdentityDataV6claimsSDySSypGvp",
+            "mangledName": "$s7EkeySDK0A12IdentityDataV6claimsSDySSypGvp",
+            "moduleName": "EkeySDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7EkeySDK0A12IdentityDataV6claimsSDySSypGvg",
+                "mangledName": "$s7EkeySDK0A12IdentityDataV6claimsSDySSypGvg",
+                "moduleName": "EkeySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "kycData",
+            "printedName": "kycData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7EkeySDK0A12IdentityDataV03kycD0SDySSypGSgvp",
+            "mangledName": "$s7EkeySDK0A12IdentityDataV03kycD0SDySSypGSgvp",
+            "moduleName": "EkeySDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7EkeySDK0A12IdentityDataV03kycD0SDySSypGSgvg",
+                "mangledName": "$s7EkeySDK0A12IdentityDataV03kycD0SDySSypGSgvg",
+                "moduleName": "EkeySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:7EkeySDK0A12IdentityDataV",
+        "mangledName": "$s7EkeySDK0A12IdentityDataV",
+        "moduleName": "EkeySDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "EkeyTokenExchangeError",
+        "printedName": "EkeyTokenExchangeError",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "network",
+            "printedName": "network",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(EkeySDK.EkeyTokenExchangeError.Type) -> (any Swift.Error) -> EkeySDK.EkeyTokenExchangeError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(any Swift.Error) -> EkeySDK.EkeyTokenExchangeError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EkeyTokenExchangeError",
+                        "printedName": "EkeySDK.EkeyTokenExchangeError",
+                        "usr": "s:7EkeySDK0A18TokenExchangeErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "any Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "EkeySDK.EkeyTokenExchangeError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EkeyTokenExchangeError",
+                        "printedName": "EkeySDK.EkeyTokenExchangeError",
+                        "usr": "s:7EkeySDK0A18TokenExchangeErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7EkeySDK0A18TokenExchangeErrorO7networkyACs0E0_pcACmF",
+            "mangledName": "$s7EkeySDK0A18TokenExchangeErrorO7networkyACs0E0_pcACmF",
+            "moduleName": "EkeySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "badResponse",
+            "printedName": "badResponse",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(EkeySDK.EkeyTokenExchangeError.Type) -> EkeySDK.EkeyTokenExchangeError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EkeyTokenExchangeError",
+                    "printedName": "EkeySDK.EkeyTokenExchangeError",
+                    "usr": "s:7EkeySDK0A18TokenExchangeErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "EkeySDK.EkeyTokenExchangeError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EkeyTokenExchangeError",
+                        "printedName": "EkeySDK.EkeyTokenExchangeError",
+                        "usr": "s:7EkeySDK0A18TokenExchangeErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7EkeySDK0A18TokenExchangeErrorO11badResponseyA2CmF",
+            "mangledName": "$s7EkeySDK0A18TokenExchangeErrorO11badResponseyA2CmF",
+            "moduleName": "EkeySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "malformedIdToken",
+            "printedName": "malformedIdToken",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(EkeySDK.EkeyTokenExchangeError.Type) -> EkeySDK.EkeyTokenExchangeError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EkeyTokenExchangeError",
+                    "printedName": "EkeySDK.EkeyTokenExchangeError",
+                    "usr": "s:7EkeySDK0A18TokenExchangeErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "EkeySDK.EkeyTokenExchangeError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EkeyTokenExchangeError",
+                        "printedName": "EkeySDK.EkeyTokenExchangeError",
+                        "usr": "s:7EkeySDK0A18TokenExchangeErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7EkeySDK0A18TokenExchangeErrorO011malformedIdC0yA2CmF",
+            "mangledName": "$s7EkeySDK0A18TokenExchangeErrorO011malformedIdC0yA2CmF",
+            "moduleName": "EkeySDK"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:7EkeySDK0A18TokenExchangeErrorO",
+        "mangledName": "$s7EkeySDK0A18TokenExchangeErrorO",
+        "moduleName": "EkeySDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -707,83 +1031,97 @@
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
       "offset": 314,
-      "length": 41,
-      "value": "\"https:\/\/login.test.ekey-b.com\/oidc\/auth\""
+      "length": 33,
+      "value": "\"https:\/\/login.ekey.bh\/oidc\/auth\""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 382,
-      "length": 23,
-      "value": "\"iZ4lBvruWxmSYqSWw-Wcf\""
+      "offset": 374,
+      "length": 34,
+      "value": "\"https:\/\/login.ekey.bh\/oidc\/token\""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
       "offset": 435,
-      "length": 72,
-      "value": "\"https:\/\/mobileapp.uat.necremit.com\/RedirectURIC\/WS_MobileAPICALLS.asmx\""
+      "length": 23,
+      "value": "\"ugiTHWoHreu2j8nACiBQV\""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 531,
+      "offset": 884,
+      "length": 88,
+      "value": "\"xbYcRWjAuWpWuyc1N7hhrXycGolrgA1xFbAykNuMkUyCjWQdEHWd0OMTucYUZjKvqnf9upvdzksB-fZf8mFoBw\""
+    },
+    {
+      "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 1002,
+      "length": 61,
+      "value": "\"https:\/\/mobileapp.necremit.com\/beyon\/WS_MobileAPICALLS.asmx\""
+    },
+    {
+      "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 1087,
       "length": 72,
       "value": "\"openid id-* id-*-additional id-*-photo ekyc-bhr-name ekyc-bhr-address \""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 614,
+      "offset": 1170,
       "length": 75,
       "value": "\"ekyc-bhr-birth ekyc-bhr-nationality ekyc-bhr-contact ekyc-bhr-employment \""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 700,
+      "offset": 1256,
       "length": 73,
       "value": "\"ekyc-bhr-passport ekyc-bhr-resident ekyc-bhr-photo ekyc-bhr-disability \""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 784,
+      "offset": 1340,
       "length": 31,
       "value": "\"liveness_proof liveness_photo\""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 849,
+      "offset": 1405,
       "length": 9,
       "value": "\"necekey\""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 885,
+      "offset": 1441,
       "length": 31,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "StringLiteral",
-      "offset": 904,
+      "offset": 1460,
       "length": 1,
       "value": "\":\/\/callback\""
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyLoginConfig.swift",
       "kind": "Array",
-      "offset": 1184,
-      "length": 40,
-      "value": "[\"app.ekey.bh\", \"tools.test.ekey-b.com\"]"
+      "offset": 1740,
+      "length": 35,
+      "value": "[\"app.ekey.bh\", \"tools.ekey-b.com\"]"
     },
     {
       "filePath": "\/Users\/syeddanish\/Desktop\/NEC Job\/EkeyExampleSDK\/EkeySDK\/Sources\/EkeySDK\/EkeyWebViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 264,
+      "offset": 290,
       "length": 5,
       "value": "false"
     }

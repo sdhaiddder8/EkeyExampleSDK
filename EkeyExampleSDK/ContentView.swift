@@ -56,8 +56,10 @@ struct ContentView: View {
         guard let presenter = UIApplication.shared.topViewController else { return }
         Ekey.shared.initiateLogin(from: presenter) { result in
             switch result {
-            case .completed(let redirectURL):
-                print("Ekey login completed: \(redirectURL.absoluteString)")
+            case .completed(let redirectURL, let codeVerifier, let identity):
+                print("Ekey login completed: \(redirectURL.absoluteString), codeVerifier: \(codeVerifier)")
+                print("Identity claims: \(identity.claims)")
+                print("KYC data: \(String(describing: identity.kycData))")
             case .cancelled:
                 print("Ekey login cancelled")
             case .failed(let error):

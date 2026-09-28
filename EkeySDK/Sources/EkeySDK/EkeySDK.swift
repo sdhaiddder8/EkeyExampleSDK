@@ -12,8 +12,9 @@ import UIKit
 /// // Start the flow from any UIViewController:
 /// Ekey.shared.initiateLogin(from: viewController) { result in
 ///     switch result {
-///     case .completed(let redirectURL):
-///         // Send redirectURL's `code` + `state` to your back-end for token exchange.
+///     case .completed(let redirectURL, let codeVerifier, let identity):
+///         // identity.claims / identity.kycData already have the login's identity data —
+///         // the SDK completed the token exchange and KYC fetch internally.
 ///     case .cancelled:
 ///         break
 ///     case .failed(let error):
@@ -35,8 +36,10 @@ public final class Ekey {
         completion: @escaping (EkeyLoginResult) -> Void
     ) {
         let loginViewController = EkeyLoginViewController(
-            onCompleted: { [weak self] url in
-                self?.finish { completion(.completed(redirectURL: url)) }
+            onCompleted: { [weak self] url, codeVerifier, identity in
+                self?.finish {
+                    completion(.completed(redirectURL: url, codeVerifier: codeVerifier, identity: identity))
+                }
             },
             onFailed: { [weak self] error in
                 self?.finish { completion(.failed(error)) }
